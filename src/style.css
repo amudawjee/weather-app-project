@@ -1,0 +1,58 @@
+body {
+  font-family: "Roboto Slab", serif;
+}
+
+.card {
+  display: block;
+  margin: 10% auto;
+  background: #ececec;
+  border: 3px #9fd3c7 solid;
+}
+
+.col-2,
+.col-4,
+.col-5,
+.col-6 {
+  text-align: center;
+  display: block;
+  margin: 20px 0 auto;
+  color: #385170;
+}
+
+.icon {
+  font-size: 150%;
+}
+
+.current {
+  font-weight: 700;
+  color: #142d4c;
+  text-align: center;
+  margin: 20px 0 auto;
+}
+
+.current.icon {
+  display: block;
+  font-size: 300%;
+}
+
+.temp-range {
+  font-size: 120%;
+}
+
+p {
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+  font-size: 14px;
+}
+
+.celcius:hover,
+.farenheit:hover {
+  font-size: 120%;
+  cursor: pointer;
+}
+
+button {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
