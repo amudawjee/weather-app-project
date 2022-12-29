@@ -7,16 +7,8 @@ body {
   margin: 10% auto;
   background: #ececec;
   border: 3px #9fd3c7 solid;
-}
-
-.col-2,
-.col-4,
-.col-5,
-.col-6 {
-  text-align: center;
-  display: block;
-  margin: 20px 0 auto;
-  color: #385170;
+  max-width: 700px;
+  padding: 10px;
 }
 
 .icon {
@@ -24,10 +16,13 @@ body {
 }
 
 .current {
+  text-align: center;
+  display: block;
   font-weight: 700;
   color: #142d4c;
   text-align: center;
-  margin: 20px 0 auto;
+  margin: 10px;
+  padding: 10px;
 }
 
 .current.icon {
@@ -45,14 +40,7 @@ p {
   font-size: 14px;
 }
 
-.celcius:hover,
-.farenheit:hover {
-  font-size: 120%;
-  cursor: pointer;
-}
-
 button {
   display: block;
   text-align: center;
-  margin-top: 20px;
 }

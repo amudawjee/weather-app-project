@@ -33,6 +33,8 @@ function showWeather(response) {
   let tempMax = Math.round(response.data.main.temp_max);
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${tempMax}°C/${tempMin}°C`;
+  let h5 = document.querySelector("h5");
+  h5.innerHTML = `${response.data.weather[0].description}`;
   findDateTime();
 }
 
