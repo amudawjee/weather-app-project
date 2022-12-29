@@ -25,13 +25,21 @@ body {
   padding: 10px;
 }
 
+h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 25px;
+}
+h3,
+h4,
+h5 {
+  font-size: 20px;
+}
+
 .current.icon {
   display: block;
   font-size: 300%;
-}
-
-.temp-range {
-  font-size: 120%;
 }
 
 p {
