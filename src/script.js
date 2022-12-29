@@ -34,7 +34,14 @@ function showWeather(response) {
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${tempMax}°C/${tempMin}°C`;
   let h5 = document.querySelector("h5");
-  h5.innerHTML = `${response.data.weather[0].description}`;
+  h5.innerHTML = response.data.weather[0].description;
+  let h6 = document.querySelector("h6");
+  h6.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  let icon = document.querySelector("img");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   findDateTime();
 }
 
