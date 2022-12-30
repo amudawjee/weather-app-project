@@ -45,10 +45,14 @@ function showWeather(response) {
   findDateTime();
 }
 
-function citySearch(event) {
+function submitSearch(event) {
   event.preventDefault();
   let search = document.querySelector("#location");
   let city = search.value;
+  citySearch(city);
+}
+
+function citySearch(city) {
   let unit = "metric";
   let apiKey = "ac209dae1f283fb332a5bb7f50b0f468";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -70,9 +74,10 @@ function getCurrentLocation(event) {
 }
 
 let changeLocation = document.querySelector("#search-button");
-changeLocation.addEventListener("click", citySearch);
+changeLocation.addEventListener("click", submitSearch);
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
 
 findDateTime();
+citySearch("London");
