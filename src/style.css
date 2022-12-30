@@ -29,6 +29,7 @@ body {
 h1,
 h2 {
   font-size: 40px;
+  display: inline;
 }
 
 h3,
@@ -46,5 +47,16 @@ p {
 
 button {
   display: block;
+  text-align: center;
+}
+
+.inactive {
+  color: #ececec;
+}
+
+.active {
+  color: #142d4c;
+  text-decoration: underline;
+  cursor: pointer;
   text-align: center;
 }
