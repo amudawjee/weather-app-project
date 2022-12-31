@@ -19,7 +19,7 @@ function findDateTime() {
   ];
   let day = days[current.getDay()];
   let timeDay = document.querySelector("h4");
-  timeDay.innerHTML = `${day} ${hour}:${min}`;
+  timeDay.innerHTML = `Last Updated: ${day} ${hour}:${min}`;
 }
 
 function showWeather(response) {
@@ -30,17 +30,23 @@ function showWeather(response) {
   let comment = document.querySelector("h5");
   let humidity = document.querySelector("h6");
   let icon = document.querySelector("img");
+  let windSpeed = document.querySelector("h7");
 
   location.innerHTML = city;
   temperature = Math.round(response.data.temperature.current);
   feelsLike = Math.round(response.data.temperature.feels_like);
   currentTemp.innerHTML = `${temperature}°C`;
   tempFeel.innerHTML = `Feels like ${feelsLike}°C`;
-  comment.innerHTML = response.data.condition.description;
+  comment.innerHTML = capitalize(response.data.condition.description);
   humidity.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.icon);
+  windSpeed.innerHTML = `Wind speed: ${response.data.wind.speed}km/h`;
   findDateTime();
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function submitSearch(event) {
