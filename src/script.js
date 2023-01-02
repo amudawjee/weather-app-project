@@ -42,9 +42,6 @@ function showForecast(response) {
         `
       <div class="row align-items-center">
       <div class="col day">${formatDate(forecastDay.time)}</div>
-      <div class="col max-temp">${Math.round(
-        forecastDay.temperature.maximum
-      )}°</div>
         <div class="col">
         <img
         class="icon"
@@ -53,9 +50,9 @@ function showForecast(response) {
         width="50px"
         />
         </div>
-        <div class="col min-temp">${Math.round(
-          forecastDay.temperature.minimum
-        )}°</div>
+      <div class="col temp-range">${Math.round(
+        forecastDay.temperature.maximum
+      )}° / ${Math.round(forecastDay.temperature.minimum)}°</div>
           </div>
           `;
     }
