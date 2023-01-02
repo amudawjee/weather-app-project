@@ -22,7 +22,8 @@ function findDateTime() {
   timeDay.innerHTML = `Last Updated: ${day} ${hour}:${min}`;
 }
 
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -88,14 +89,20 @@ function submitSearch(event) {
 
 function citySearch(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
+  let forecastURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${unit}`;
+
   axios.get(apiUrl).then(showWeather);
+  axios.get(forecastURL).then(showForecast);
 }
 
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let geoUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${unit}`;
+  let forecastGeoUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${unit}`;
+
   axios.get(geoUrl).then(showWeather);
+  axios.get(forecastGeoUrl).then(showForecast);
 }
 
 function getCurrentLocation(event) {
@@ -149,6 +156,4 @@ convertCelcius.addEventListener("click", changeCelcius);
 let convertFarenheit = document.querySelector("#convert-farenheit");
 convertFarenheit.addEventListener("click", changeFarenheit);
 
-findDateTime();
 citySearch("London");
-showForecast();
