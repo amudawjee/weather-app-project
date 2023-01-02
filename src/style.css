@@ -15,7 +15,6 @@ body {
   margin: 0 auto;
   display: block;
 }
-
 .current {
   text-align: center;
   display: block;
@@ -26,8 +25,7 @@ body {
   padding: 10px;
 }
 
-h1,
-h2 {
+h1 {
   font-size: 40px;
   display: block;
 }
@@ -51,13 +49,20 @@ button {
   text-align: center;
 }
 
+#current-temp {
+  display: inline;
+  font-size: 45px;
+}
+
 .inactive {
-  color: #ececec;
+  color: #142d4c;
+  font-size: 40px;
 }
 
 .active {
-  color: #142d4c;
+  color: #9fd3c7;
   text-decoration: underline;
   cursor: pointer;
   text-align: center;
+  font-size: 20px;
 }
