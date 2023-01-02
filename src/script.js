@@ -121,14 +121,18 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+function convertToFarenheit(celcius) {
+  return Math.round((celcius * 9) / 5 + 32);
+}
+
 function changeCelcius(event) {
   document.getElementById("convert-celcius").classList.remove("active");
   document.getElementById("convert-celcius").classList.add("inactive");
   document.getElementById("convert-farenheit").classList.remove("inactive");
   document.getElementById("convert-farenheit").classList.add("active");
 
-  farenheitTemp = Math.round((temperature * 9) / 5 + 32);
-  farenheitFeel = Math.round((feelsLike * 9) / 5 + 32);
+  farenheitTemp = convertToFarenheit(temperature);
+  farenheitFeel = convertToFarenheit(feelsLike);
 
   let currentTemp = document.querySelector("#current-temp");
   let tempFeel = document.querySelector("h3");
