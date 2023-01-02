@@ -22,6 +22,36 @@ function findDateTime() {
   timeDay.innerHTML = `Last Updated: ${day} ${hour}:${min}`;
 }
 
+function showForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecastHTML = "";
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="row align-items-center">
+              <div class="col day">${day}</div>
+              <div class="col max-temp">12°</div>
+              <div class="col">
+                <img
+                  class="icon"
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+                  alt=""
+                  width="50px"
+                />
+              </div>
+              <div class="col min-temp">7°</div>
+            </div>
+    `;
+  });
+
+  forecast.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   let city = response.data.city;
   let location = document.querySelector("h1");
@@ -121,3 +151,4 @@ convertFarenheit.addEventListener("click", changeFarenheit);
 
 findDateTime();
 citySearch("London");
+showForecast();
