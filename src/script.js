@@ -22,32 +22,43 @@ function findDateTime() {
   timeDay.innerHTML = `Last Updated: ${day} ${hour}:${min}`;
 }
 
-function showForecast(response) {
-  console.log(response.data.daily);
-  let forecast = document.querySelector("#forecast");
+function formatDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+function showForecast(response) {
+  let forecastData = response.data.daily;
+  let forecast = document.querySelector("#forecast");
 
   let forecastHTML = "";
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="row align-items-center">
-              <div class="col day">${day}</div>
-              <div class="col max-temp">12°</div>
-              <div class="col">
-                <img
-                  class="icon"
-                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
-                  alt=""
-                  width="50px"
-                />
-              </div>
-              <div class="col min-temp">7°</div>
-            </div>
-    `;
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="row align-items-center">
+      <div class="col day">${formatDate(forecastDay.time)}</div>
+      <div class="col max-temp">${Math.round(
+        forecastDay.temperature.maximum
+      )}°</div>
+        <div class="col">
+        <img
+        class="icon"
+        src="${forecastDay.condition.icon_url}"
+        alt="${forecastDay.condition.icon}"
+        width="50px"
+        />
+        </div>
+        <div class="col min-temp">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</div>
+          </div>
+          `;
+    }
   });
 
   forecast.innerHTML = forecastHTML;
