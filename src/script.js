@@ -30,7 +30,7 @@ function showWeather(response) {
   let comment = document.querySelector("h5");
   let humidity = document.querySelector("h6");
   let icon = document.querySelector("img");
-  let windSpeed = document.querySelector("h7");
+  let windSpeed = document.querySelector("h2");
 
   location.innerHTML = city;
   temperature = Math.round(response.data.temperature.current);

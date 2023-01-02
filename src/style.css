@@ -29,13 +29,15 @@ h1 {
   font-size: 40px;
   display: block;
 }
-
 h3,
 h4,
 h5,
 h6,
-h7 {
+h2 {
   font-size: 20px;
+  text-align: center;
+  font-weight: 400;
+  color: #142d4c;
 }
 
 p {
@@ -57,6 +59,7 @@ button {
 .inactive {
   color: #142d4c;
   font-size: 40px;
+  font-weight: 400;
 }
 
 .active {
@@ -65,4 +68,10 @@ button {
   cursor: pointer;
   text-align: center;
   font-size: 20px;
+}
+
+.forecast {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
 }
