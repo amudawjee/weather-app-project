@@ -34,6 +34,8 @@ function showForecast(response) {
   let forecast = document.querySelector("#forecast");
 
   let forecastHTML = "";
+  minTemp = [];
+  maxTemp = [];
 
   forecastData.forEach(function (forecastDay, index) {
     if (index < 5) {
@@ -143,12 +145,23 @@ function changeCelcius(event) {
 
   let forecastMin = document.querySelectorAll(".temp-range .min-temp");
   let forecastMax = document.querySelectorAll(".temp-range .max-temp");
+  let farMin = [];
+  let farMax = [];
 
-  minTemp.forEach(function (day, index) {
-    forecastMin[index].innerHTML = `${convertToFarenheit(day)}°`;
+  minTemp.forEach(function (day) {
+    farMin.push(convertToFarenheit(day));
   });
-  maxTemp.forEach(function (day, index) {
-    forecastMax[index].innerHTML = `${convertToFarenheit(day)}°`;
+
+  forecastMin.forEach(function (day, index) {
+    day.innerHTML = `${farMin[index]}°`;
+  });
+
+  maxTemp.forEach(function (day) {
+    farMax.push(convertToFarenheit(day));
+  });
+
+  forecastMax.forEach(function (day, index) {
+    day.innerHTML = `${farMax[index]}°`;
   });
 }
 
@@ -167,11 +180,12 @@ function changeFarenheit(event) {
   let forecastMin = document.querySelectorAll(".temp-range .min-temp");
   let forecastMax = document.querySelectorAll(".temp-range .max-temp");
 
-  minTemp.forEach(function (day, index) {
-    forecastMin[index].innerHTML = `${Math.round(day)}°`;
+  forecastMin.forEach(function (day, index) {
+    day.innerHTML = `${Math.round(minTemp[index])}°`;
   });
-  maxTemp.forEach(function (day, index) {
-    forecastMax[index].innerHTML = `${Math.round(day)}°`;
+
+  forecastMax.forEach(function (day, index) {
+    day.innerHTML = `${Math.round(maxTemp[index])}°`;
   });
 }
 
