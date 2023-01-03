@@ -184,9 +184,11 @@ let maxTemp = [];
 
 let changeLocation = document.querySelector("#search-button");
 changeLocation.addEventListener("click", submitSearch);
+changeLocation.addEventListener("click", changeFarenheit);
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getCurrentLocation);
+currentLocation.addEventListener("click", changeFarenheit);
 
 let convertCelcius = document.querySelector("#convert-celcius");
 convertCelcius.addEventListener("click", changeCelcius);
