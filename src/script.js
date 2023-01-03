@@ -36,7 +36,9 @@ function showForecast(response) {
   let forecastHTML = "";
 
   forecastData.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 5) {
+      minTemp.push(forecastDay.temperature.minimum);
+      maxTemp.push(forecastDay.temperature.maximum);
       forecastHTML =
         forecastHTML +
         `
@@ -50,9 +52,11 @@ function showForecast(response) {
         width="50px"
         />
         </div>
-      <div class="col temp-range">${Math.round(
+      <div class="col temp-range"> <span class="max-temp"> ${Math.round(
         forecastDay.temperature.maximum
-      )}° / ${Math.round(forecastDay.temperature.minimum)}°</div>
+      )}° </span>/ <span class="min-temp">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</span></div>
           </div>
           `;
     }
@@ -136,6 +140,16 @@ function changeCelcius(event) {
 
   currentTemp.innerHTML = `${farenheitTemp}`;
   tempFeel.innerHTML = `Feels like ${farenheitFeel}°F`;
+
+  let forecastMin = document.querySelectorAll(".temp-range .min-temp");
+  let forecastMax = document.querySelectorAll(".temp-range .max-temp");
+
+  minTemp.forEach(function (day, index) {
+    forecastMin[index].innerHTML = `${convertToFarenheit(day)}°`;
+  });
+  maxTemp.forEach(function (day, index) {
+    forecastMax[index].innerHTML = `${convertToFarenheit(day)}°`;
+  });
 }
 
 function changeFarenheit(event) {
@@ -149,12 +163,24 @@ function changeFarenheit(event) {
 
   currentTemp.innerHTML = `${temperature}`;
   tempFeel.innerHTML = `Feels like ${feelsLike}°C`;
+
+  let forecastMin = document.querySelectorAll(".temp-range .min-temp");
+  let forecastMax = document.querySelectorAll(".temp-range .max-temp");
+
+  minTemp.forEach(function (day, index) {
+    forecastMin[index].innerHTML = `${Math.round(day)}°`;
+  });
+  maxTemp.forEach(function (day, index) {
+    forecastMax[index].innerHTML = `${Math.round(day)}°`;
+  });
 }
 
 let unit = "metric";
 let apiKey = "30cfadc4433fc0f8adtbo56e88e10e9a";
 let temperature = "";
 let feelsLike = "";
+let minTemp = [];
+let maxTemp = [];
 
 let changeLocation = document.querySelector("#search-button");
 changeLocation.addEventListener("click", submitSearch);
